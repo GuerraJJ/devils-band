@@ -4,17 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useLanguage } from "../lib/LanguageContext"; // 👈 Tu "llave" al contexto
+import { useLanguage } from "../lib/LanguageContext"; 
+import { Languages } from 'lucide-react'; 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
 
-  // 🌍 Extraemos 't' (traducciones) y 'lang' (idioma actual)
-  const { lang, changeLang, t } = useLanguage();
+
+  const { language, toggleLanguage, t } = useLanguage();
+  console.log("Idioma actual:", language);
+  console.log("Función disponible:", typeof toggleLanguage);
 
   const handleClick = () => setOpen(false);
+
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -40,18 +44,18 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="nav-container">
-        {/* LOGO */}
+        {/* LOGO 🎸 */}
         <Link href="/" onClick={handleClick}>
           <Image
-            src="/logo.png"
+            src="/logo1.png"
             alt="Devils Logo"
             width={120}
-            height={40}
+            height={25}
             priority
           />
         </Link>
 
-        {/* BURGER */}
+        {/* BURGER (Menú móvil) 🍔 */}
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
@@ -103,21 +107,21 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* 🌍 SELECTOR DE IDIOMA */}
-        <div className="lang-switch">
-          <button
-            onClick={() => changeLang("es")}
-            className={lang === "es" ? "active" : ""}
-          >
-            ES
-          </button>
-          <button
-            onClick={() => changeLang("en")}
-            className={lang === "en" ? "active" : ""}
-          >
-            EN
-          </button>
-        </div>
+{/* 🌍 SELECTOR DE IDIOMA ÚNICO */}
+<div className="lang-switch">
+  <button 
+    onClick={toggleLanguage} 
+    className="lang-button-toggle"
+    aria-label="Change Language"
+    title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+  >
+    <Languages size={20} className="world-icon" />
+    {/* Mostramos el idioma al que el usuario cambiará al hacer clic */}
+    <span className="lang-text">
+      {language === 'es' ? 'EN' : 'ES'}
+    </span>
+  </button>
+</div>
       </div>
     </header>
   );

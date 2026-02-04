@@ -1,24 +1,13 @@
 "use client";
 
 import Hero from "../components/Hero";
+import Shows from "../components/Shows"; 
+import Gallery from "../components/Gallery"; 
 import useReveal from "../components/useReveal";
 import { useLanguage } from "../lib/LanguageContext";
 
-// 📝 Sacamos los datos fuera para optimizar el componente
-const showsData = [
-  {
-    date: "15 FEB 2026",
-    venue: "Nodriza Estudio",
-    city: "Monterrey, N.L."
-  },
-  {
-    date: "28 MAR 2026",
-    venue: "Café Iguana",
-    city: "Monterrey, N.L."
-  }
-];
-
 export default function Home() {
+  
   useReveal();
   const { t } = useLanguage();
 
@@ -35,27 +24,24 @@ export default function Home() {
         <p>{t.music.description}</p>
         <div className="spotify-embed">
           <iframe
-            src="https://open.spotify.com/embed/artist/5ujV11VnTu8tjSuM0Gtnar"
+            src="https://open.spotify.com/embed/artist/5ujV11VnTu8tjSuM0Gtnar" 
             width="100%"
             height="380"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
+            style={{ borderRadius: '12px', border: 'none' }}
           />
         </div>
       </section>
 
       {/* ================= SHOWS ================= */}
-      <section id="shows" className="shows reveal">
-        <h2>{t.shows.title}</h2>
-        <div className="shows-list">
-          {showsData.map((show, index) => (
-            <div className="show-item" key={index}>
-              <span className="show-date">{show.date}</span>
-              <span className="show-venue">{show.venue}</span>
-              <span className="show-city">{show.city}</span>
-            </div>
-          ))}
-        </div>
+      <section id="shows" className="reveal">
+        <Shows /> 
+      </section>
+
+      {/* ================= GALLERY ================= */}
+      <section id="gallery" className="reveal">
+        <Gallery /> 
       </section>
 
       {/* ================= CONTACT ================= */}

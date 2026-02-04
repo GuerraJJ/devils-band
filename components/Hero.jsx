@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <div className="hero-content">
       <Image
-        src="/logo.png" // Asegúrate que la ruta coincida con tu carpeta public
+        src="/logo.png" 
         alt="DEVILS logo"
         width={220}
         height={220}
