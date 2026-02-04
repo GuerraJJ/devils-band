@@ -1,43 +1,38 @@
+"use client";
+
+import Image from "next/image";
+import { useLanguage } from "../lib/LanguageContext"; 
+
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section
-      style={{
-        minHeight: "100vh",
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('/images/hero.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        padding: "2rem",
-      }}
-    >
-      <div>
-        <img
-          src="/images/logo.svg"
-          alt="DEVILS logo"
-          style={{
-            width: "clamp(120px, 25vw, 220px)",
-            marginBottom: "1.5rem",
-          }}
-        />
+    <div className="hero-content">
+      <Image
+        src="/logo.png" // Asegúrate que la ruta coincida con tu carpeta public
+        alt="DEVILS logo"
+        width={220}
+        height={220}
+        className="hero-logo"
+        priority
+      />
 
-        <h1
-          style={{
-            fontSize: "clamp(3rem, 8vw, 6rem)",
-            color: "#b11226",
-            letterSpacing: "0.3rem",
-          }}
+      <h1>DEVILS</h1>
+
+      <p className="hero-tagline">
+        {t.hero.tagline}
+      </p>
+
+      <div className="hero-cta">
+        <a
+          href="https://open.spotify.com/embed/artist/5ujV11VnTu8tjSuM0Gtnar" // Pon tu link real aquí
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-button"
         >
-          DEVILS
-        </h1>
-
-        <p style={{ marginTop: "1rem" }}>
-          Rock & Hard Rock desde Monterrey
-        </p>
+          {t.hero.cta}
+        </a>
       </div>
-    </section>
+    </div>
   );
 }
