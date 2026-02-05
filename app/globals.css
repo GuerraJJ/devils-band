@@ -671,3 +671,56 @@ main {
     padding: 0;
   }
 }
+
+/* 1. El contenedor principal del Footer */
+.footer {
+  background: #050505; /* Un negro casi puro para dar profundidad 🌑 */
+  padding: 60px 20px;
+  border-top: 2px solid #ff0000; /* Una línea roja vibrante para separar 🤘 */
+  text-align: center;
+}
+
+/* 2. La cuadrícula de redes sociales */
+.social-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Espacio generoso entre iconos ↔️ */
+  margin-bottom: 30px;
+}
+
+/* 3. Diseño de cada enlace social */
+.social-link {
+  background: rgba(255, 255, 255, 0.05); /* Fondo sutil 🌫️ */
+  padding: 15px;
+  border-radius: 50%; /* Iconos circulares ⭕ */
+  display: flex;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica 💫 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 4. Efecto de interacción (Hover) */
+.social-link:hover {
+  background: #ff0000; /* Fondo rojo al pasar el mouse 🔥 */
+  transform: translateY(-10px) rotate(8deg); /* Salta y gira un poco 🚀 */
+  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4); /* Resplandor rojo 🔴 */
+}
+
+/* 5. Asegurar que los logos se vean blancos por defecto */
+.social-link img {
+  filter: brightness(0) invert(1); /* Convierte logos a blanco puro ⚪ */
+  transition: filter 0.3s ease;
+}
+
+.social-link:hover img {
+  filter: brightness(1) invert(0); /* Vuelve a su color original en hover 🌈 */
+}
+
+/* 6. Texto de Copyright */
+.copyright {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
